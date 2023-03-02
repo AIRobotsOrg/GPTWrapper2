@@ -14,8 +14,8 @@ function loader(element) {
         element.textContent += '.';
 
         // If the loading indicator has reached three dots, reset it
-        if (element.textContent === '....') {
-            element.textContent = 'Pittee hiukan miettiä';
+        if (element.textContent === 'Kuka siellä kyselee....') {
+            element.textContent = '';
         }
     }, 300);
 }
@@ -62,7 +62,6 @@ function chatStripe(isAi, value, uniqueId) {
     )
 }
 
-
 const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -85,9 +84,8 @@ const handleSubmit = async (e) => {
     const messageDiv = document.getElementById(uniqueId)
 
     // messageDiv.innerHTML = "..."
-    loader(messageDiv);
+    loader(messageDiv)
 
-    // fech data from server -> bot´s response
     const response = await fetch('https://gptwrapper2.onrender.com/', {
         method: 'POST',
         headers: {
@@ -97,10 +95,9 @@ const handleSubmit = async (e) => {
             prompt: data.get('prompt')
         })
     })
- 
-    //tyhjennä tekstikenttä
+
     clearInterval(loadInterval)
-    messageDiv.innerHTML = " ";
+    messageDiv.innerHTML = " "
 
     if (response.ok) {
         const data = await response.json();
@@ -114,10 +111,10 @@ const handleSubmit = async (e) => {
         alert(err)
     }
 }
-//lähetä viesti painamalla joko nappia tai entteriä
-form.addEventListener('submit', handleSubmit);
+
+form.addEventListener('submit', handleSubmit)
 form.addEventListener('keyup', (e) => {
-  if (e.keyCode === 13) {
-    handleSubmit(e);
-  }
+    if (e.keyCode === 13) {
+        handleSubmit(e)
+    }
 })
