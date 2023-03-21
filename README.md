@@ -18,3 +18,13 @@ Tech Stack
 - JavaScript (for handling the events)
 - HTML
 - OpenAI
+
+Hosting
+- Render
+    - Unified cloud to build and run apps and websites
+    - The region where web service runs: Frankfurt
+
+Fontend
+- Vercel
+
+    -  
